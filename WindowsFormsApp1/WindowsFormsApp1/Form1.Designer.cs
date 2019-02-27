@@ -42,12 +42,16 @@
             this.leerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.crearToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sigmaBtn
             // 
-            this.sigmaBtn.Location = new System.Drawing.Point(12, 57);
+            this.sigmaBtn.Location = new System.Drawing.Point(24, 57);
             this.sigmaBtn.Name = "sigmaBtn";
             this.sigmaBtn.Size = new System.Drawing.Size(75, 23);
             this.sigmaBtn.TabIndex = 0;
@@ -73,7 +77,7 @@
             // 
             // lambdaBtn
             // 
-            this.lambdaBtn.Location = new System.Drawing.Point(93, 57);
+            this.lambdaBtn.Location = new System.Drawing.Point(150, 57);
             this.lambdaBtn.Name = "lambdaBtn";
             this.lambdaBtn.Size = new System.Drawing.Size(75, 23);
             this.lambdaBtn.TabIndex = 3;
@@ -99,7 +103,7 @@
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(174, 57);
+            this.addBtn.Location = new System.Drawing.Point(6, 19);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 23);
             this.addBtn.TabIndex = 6;
@@ -129,6 +133,7 @@
             // crearToolStripMenuItem
             // 
             this.crearToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearToolStripMenuItem1,
             this.guardarToolStripMenuItem,
             this.leerToolStripMenuItem});
             this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
@@ -138,18 +143,20 @@
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.guardarToolStripMenuItem.Text = "1.- Guardar";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Text = "2.- Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // leerToolStripMenuItem
             // 
             this.leerToolStripMenuItem.Name = "leerToolStripMenuItem";
-            this.leerToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.leerToolStripMenuItem.Text = "2.- Leer";
+            this.leerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leerToolStripMenuItem.Text = "3.- Leer";
+            this.leerToolStripMenuItem.Click += new System.EventHandler(this.leerToolStripMenuItem_Click);
             // 
             // modifyBtn
             // 
-            this.modifyBtn.Location = new System.Drawing.Point(12, 84);
+            this.modifyBtn.Location = new System.Drawing.Point(6, 48);
             this.modifyBtn.Name = "modifyBtn";
             this.modifyBtn.Size = new System.Drawing.Size(75, 23);
             this.modifyBtn.TabIndex = 9;
@@ -159,7 +166,7 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(93, 84);
+            this.deleteBtn.Location = new System.Drawing.Point(100, 19);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 23);
             this.deleteBtn.TabIndex = 10;
@@ -167,15 +174,42 @@
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.addBtn);
+            this.groupBox1.Controls.Add(this.deleteBtn);
+            this.groupBox1.Controls.Add(this.modifyBtn);
+            this.groupBox1.Location = new System.Drawing.Point(278, 29);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(181, 77);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Acciones";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Reglas Gramaticales";
+            // 
+            // crearToolStripMenuItem1
+            // 
+            this.crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
+            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.crearToolStripMenuItem1.Text = "1.-Crear";
+            this.crearToolStripMenuItem1.Click += new System.EventHandler(this.crearToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.modifyBtn);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chainTxtBox);
-            this.Controls.Add(this.addBtn);
             this.Controls.Add(this.arrowlbl);
             this.Controls.Add(this.rightTxtBox);
             this.Controls.Add(this.lambdaBtn);
@@ -188,6 +222,7 @@
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,6 +244,9 @@
         private System.Windows.Forms.ToolStripMenuItem leerToolStripMenuItem;
         private System.Windows.Forms.Button modifyBtn;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem1;
     }
 }
 
