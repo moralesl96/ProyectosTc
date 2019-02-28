@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        public string Dev;
         public Form1()
         {
             InitializeComponent();
@@ -32,7 +33,14 @@ namespace WindowsFormsApp1
         {
             if (this.leftTxtBox.Text != "" && this.rightTxtBox.Text != "")
             {
-                int match = rulesListBox.FindString(leftTxtBox.Text + "->" + rightTxtBox.Text);
+                int match = -1;
+                for (int i = 0; i < rulesListBox.Items.Count; i++)
+                {
+                    if (rulesListBox.Items[i].ToString() == leftTxtBox.Text + "->" + rightTxtBox.Text)
+                    {
+                        match = i;
+                    }
+                }
                 int match2 = rulesListBox.FindString("Σ");
                 if (match2 == -1)
                 {
@@ -68,6 +76,7 @@ namespace WindowsFormsApp1
                     else
                     {
                         MessageBox.Show("Esa regla ya se encuentra en tu lista, agrega otra diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        rulesListBox.SetSelected(match, true);
                     }
                 }
             }
@@ -115,6 +124,7 @@ namespace WindowsFormsApp1
             }
         }
 
+       
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog save = new SaveFileDialog();
@@ -160,6 +170,33 @@ namespace WindowsFormsApp1
             leftTxtBox.Clear();
             rightTxtBox.Clear();
             rulesListBox.Items.Clear();
+            chainTxtBox.Clear();
+        }
+
+        private void rulesListBox_DoubleClick(object sender, EventArgs e)
+        {
+            if (rulesListBox.SelectedItem != null)
+            {
+                string indexString = rulesListBox.SelectedItem.ToString();
+                string chaintText = chainTxtBox.Text.ToString();
+                if (chainTxtBox.Text == "")
+                {
+                    chainTxtBox.Text = rulesListBox.SelectedItem.ToString();
+                    this.leftTxtBox.Clear();
+                    this.rightTxtBox.Clear();
+                }
+                else
+                {
+                   
+                    int index = chaintText.IndexOf(indexString.Substring(0, indexString.IndexOf("-")));
+                    
+                    Dev = chaintText.Substring(0, index) + indexString.Substring(indexString.IndexOf(">") + 1) + chaintText.Substring(index+1);
+                    MessageBox.Show(Dev);
+                    chainTxtBox.AppendText("->" + Dev.Split('>').Last());
+                    this.leftTxtBox.Clear();
+                    this.rightTxtBox.Clear();
+                }
+            }
         }
     }
 }

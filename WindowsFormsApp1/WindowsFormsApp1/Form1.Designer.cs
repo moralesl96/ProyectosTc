@@ -38,13 +38,13 @@
             this.chainTxtBox = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.crearToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,7 @@
             this.rulesListBox.Size = new System.Drawing.Size(120, 329);
             this.rulesListBox.TabIndex = 1;
             this.rulesListBox.SelectedIndexChanged += new System.EventHandler(this.rulesListBox_SelectedIndexChanged);
+            this.rulesListBox.DoubleClick += new System.EventHandler(this.rulesListBox_DoubleClick);
             // 
             // leftTxtBox
             // 
@@ -140,17 +141,24 @@
             this.crearToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.crearToolStripMenuItem.Text = "Opciones";
             // 
+            // crearToolStripMenuItem1
+            // 
+            this.crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
+            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
+            this.crearToolStripMenuItem1.Text = "1.-Crear";
+            this.crearToolStripMenuItem1.Click += new System.EventHandler(this.crearToolStripMenuItem1_Click);
+            // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.guardarToolStripMenuItem.Text = "2.- Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // leerToolStripMenuItem
             // 
             this.leerToolStripMenuItem.Name = "leerToolStripMenuItem";
-            this.leerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.leerToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.leerToolStripMenuItem.Text = "3.- Leer";
             this.leerToolStripMenuItem.Click += new System.EventHandler(this.leerToolStripMenuItem_Click);
             // 
@@ -194,13 +202,6 @@
             this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Reglas Gramaticales";
-            // 
-            // crearToolStripMenuItem1
-            // 
-            this.crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
-            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.crearToolStripMenuItem1.Text = "1.-Crear";
-            this.crearToolStripMenuItem1.Click += new System.EventHandler(this.crearToolStripMenuItem1_Click);
             // 
             // Form1
             // 
