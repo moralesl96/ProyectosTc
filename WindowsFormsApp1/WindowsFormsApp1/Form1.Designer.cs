@@ -44,7 +44,11 @@
             this.modifyBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.typeGrBtn = new System.Windows.Forms.Button();
+            this.clnButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.langTxtBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +79,7 @@
             this.leftTxtBox.Name = "leftTxtBox";
             this.leftTxtBox.Size = new System.Drawing.Size(100, 20);
             this.leftTxtBox.TabIndex = 2;
+            this.leftTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.leftTxtBox_KeyDown);
             // 
             // lambdaBtn
             // 
@@ -92,6 +97,7 @@
             this.rightTxtBox.Name = "rightTxtBox";
             this.rightTxtBox.Size = new System.Drawing.Size(100, 20);
             this.rightTxtBox.TabIndex = 4;
+            this.rightTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rightTxtBox_KeyDown);
             // 
             // arrowlbl
             // 
@@ -127,7 +133,7 @@
             this.crearToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(833, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -184,15 +190,37 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.typeGrBtn);
+            this.groupBox1.Controls.Add(this.clnButton);
             this.groupBox1.Controls.Add(this.addBtn);
             this.groupBox1.Controls.Add(this.deleteBtn);
             this.groupBox1.Controls.Add(this.modifyBtn);
             this.groupBox1.Location = new System.Drawing.Point(278, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(181, 77);
+            this.groupBox1.Size = new System.Drawing.Size(292, 77);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Acciones";
+            // 
+            // typeGrBtn
+            // 
+            this.typeGrBtn.Location = new System.Drawing.Point(181, 19);
+            this.typeGrBtn.Name = "typeGrBtn";
+            this.typeGrBtn.Size = new System.Drawing.Size(97, 23);
+            this.typeGrBtn.TabIndex = 12;
+            this.typeGrBtn.Text = "Tipo Gramatica";
+            this.typeGrBtn.UseVisualStyleBackColor = true;
+            this.typeGrBtn.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // clnButton
+            // 
+            this.clnButton.Location = new System.Drawing.Point(100, 48);
+            this.clnButton.Name = "clnButton";
+            this.clnButton.Size = new System.Drawing.Size(75, 23);
+            this.clnButton.TabIndex = 11;
+            this.clnButton.Text = "Limpiar";
+            this.clnButton.UseVisualStyleBackColor = true;
+            this.clnButton.Click += new System.EventHandler(this.clnButton_Click);
             // 
             // label1
             // 
@@ -203,11 +231,33 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Reglas Gramaticales";
             // 
+            // langTxtBox
+            // 
+            this.langTxtBox.Location = new System.Drawing.Point(150, 458);
+            this.langTxtBox.Multiline = true;
+            this.langTxtBox.Name = "langTxtBox";
+            this.langTxtBox.ReadOnly = true;
+            this.langTxtBox.Size = new System.Drawing.Size(598, 81);
+            this.langTxtBox.TabIndex = 13;
+            this.langTxtBox.Text = "{}";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 492);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 21);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Lenguaje L(G):";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(833, 551);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.langTxtBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chainTxtBox);
@@ -220,7 +270,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Reglas Gramaticales";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -248,6 +298,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem1;
+        private System.Windows.Forms.Button clnButton;
+        private System.Windows.Forms.TextBox langTxtBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button typeGrBtn;
     }
 }
 
