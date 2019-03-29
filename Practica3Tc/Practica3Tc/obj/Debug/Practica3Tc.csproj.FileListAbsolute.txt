@@ -1,0 +1,10 @@
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\bin\Debug\Practica3Tc.exe.config
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\bin\Debug\Practica3Tc.exe
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\bin\Debug\Practica3Tc.pdb
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\obj\Debug\Practica3Tc.csprojAssemblyReference.cache
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\obj\Debug\Practica3Tc.Form1.resources
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\obj\Debug\Practica3Tc.Properties.Resources.resources
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\obj\Debug\Practica3Tc.csproj.GenerateResource.cache
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\obj\Debug\Practica3Tc.csproj.CoreCompileInputs.cache
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\obj\Debug\Practica3Tc.exe
+C:\Users\lui_d\source\repos\Practica3Tc\Practica3Tc\obj\Debug\Practica3Tc.pdb
