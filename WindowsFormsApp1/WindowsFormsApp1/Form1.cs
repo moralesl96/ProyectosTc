@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
         public List<string> rightList = new List<string>();
         public int flag = 0;
         public int flag2 = 0;
+        public string fileName = "";
 
 
         public Form1()
@@ -152,7 +153,14 @@ namespace WindowsFormsApp1
             {
                 SaveFileDialog save = new SaveFileDialog();
 
-                save.FileName = ".txt";
+                if (fileName == "")
+                {
+                    save.FileName = "gf_.txt";
+                }
+                else
+                {
+                    save.FileName = fileName;
+                        }
 
                 save.Filter = "Text File | *.txt";
 
@@ -180,21 +188,36 @@ namespace WindowsFormsApp1
             langTxtBox.Text = "{}";
             langList.Clear();
             OpenFileDialog f = new OpenFileDialog();
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                rulesListBox.Items.Clear();
-
-                List<string> lines = new List<string>();
-                using (StreamReader r = new StreamReader(f.OpenFile()))
+            
+          
+            
+                if (f.ShowDialog() == DialogResult.OK)
                 {
-                    string line;
-                    while ((line = r.ReadLine()) != null)
+                fileName = f.SafeFileName;
+                int index = fileName.IndexOf("gf_");
+                if (index >= 0)
                     {
-                        rulesListBox.Items.Add(line);
+                        rulesListBox.Items.Clear();
 
+                        List<string> lines = new List<string>();
+                        using (StreamReader r = new StreamReader(f.OpenFile()))
+                        {
+                            string line;
+                            while ((line = r.ReadLine()) != null)
+                            {
+                                rulesListBox.Items.Add(line);
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Formato incorrecto de archivo, debe contener gr_ para poder abrirlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-            }
+            
+           
+
         }
 
         private void crearToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -205,6 +228,7 @@ namespace WindowsFormsApp1
             chainTxtBox.Clear();
             langTxtBox.Text = "{}";
             langList.Clear();
+            fileName = "";
         }
 
         private void rulesListBox_DoubleClick(object sender, EventArgs e)

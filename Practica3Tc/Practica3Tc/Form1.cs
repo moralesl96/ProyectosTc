@@ -15,7 +15,11 @@ namespace Practica3Tc
     public partial class Form1 : Form
     {
         private string[] entries, states, instates, fnstates;
-        private string fileName = "";
+        private string fileName = "", initialState;
+        Dictionary<string, List<string>> statesDic = new Dictionary<string, List<string>>();
+        List<string> newStatesString = new List<string>();
+        List<string> states0 = new List<string>();
+        List<string> states1 = new List<string>();
         public Form1()
         {
             InitializeComponent();
@@ -356,10 +360,54 @@ namespace Practica3Tc
             }
             if (flagA == 1)
             {
-                MessageBox.Show("Tiene los estados y respuestas");
+                deterministicTable();
             }
             else if (flagA == 0)
                 MessageBox.Show("Se ingreso un estado(s) no valido(s)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void deterministicTable()
+        {
+            initialState = String.Join(",", instates);
+            newStatesString.Add(initialState);
+            statesDic.Clear();
+            bool tableflag = true;
+            string entryvalue = ""; 
+            // MessageBox.Show(fsaTable.RowCount.ToString());
+            for (int renglon = 0; renglon < fsaTable.RowCount; renglon++)
+            {
+                List<string> entrystate = new List<string>();
+                for (int columna = 0; columna < fsaTable.ColumnCount; columna++)
+                {
+                    Control c = fsaTable.GetControlFromPosition(columna, renglon);
+                    if (renglon > 0 && columna > 0)
+                    {
+                        //MessageBox.Show(columna.ToString());
+                        entrystate.Add(c.Text);
+                    }
+                }
+                //MessageBox.Show(renglon.ToString());
+                if (renglon > 0)
+                    statesDic.Add(states[renglon - 1], entrystate);
+            }
+
+           // for (int i=0;tableflag;i++)
+           // {
+                foreach (char c in newStatesString[0])
+                {
+                    MessageBox.Show(statesDic[c.ToString(),[0]]);
+                }
+           //}
+
+            //Code to get the values of the lists on the Dictionaries
+            for (int Key = 0; Key < states.Length; Key++)
+            {
+                for (int ListIndex = 0; ListIndex < statesDic[states[Key]].Count; ListIndex++)
+                {
+                    MessageBox.Show(statesDic[states[Key]][ListIndex]);
+                }
+            }
+
         }
     }
 }

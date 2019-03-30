@@ -49,12 +49,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.langTxtBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sigmaBtn
             // 
+            this.sigmaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sigmaBtn.Location = new System.Drawing.Point(24, 57);
             this.sigmaBtn.Name = "sigmaBtn";
             this.sigmaBtn.Size = new System.Drawing.Size(75, 23);
@@ -83,6 +85,7 @@
             // 
             // lambdaBtn
             // 
+            this.lambdaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lambdaBtn.Location = new System.Drawing.Point(150, 57);
             this.lambdaBtn.Name = "lambdaBtn";
             this.lambdaBtn.Size = new System.Drawing.Size(75, 23);
@@ -195,6 +198,7 @@
             this.groupBox1.Controls.Add(this.addBtn);
             this.groupBox1.Controls.Add(this.deleteBtn);
             this.groupBox1.Controls.Add(this.modifyBtn);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(278, 29);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(292, 77);
@@ -225,9 +229,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 94);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.Size = new System.Drawing.Size(123, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Reglas Gramaticales";
             // 
@@ -251,11 +256,22 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Lenguaje L(G):";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(150, 94);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Derivaciones:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 551);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.langTxtBox);
             this.Controls.Add(this.label1);
@@ -302,6 +318,7 @@
         private System.Windows.Forms.TextBox langTxtBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button typeGrBtn;
+        private System.Windows.Forms.Label label3;
     }
 }
 
