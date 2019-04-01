@@ -1,0 +1,14 @@
+a,b
+A,B,C,D,QF
+A,C,QF
+QF
+A,QF
+B,QF
+-
+B,QF
+D
+-
+-
+C,QF
+-
+-

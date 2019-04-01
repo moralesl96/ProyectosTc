@@ -17,9 +17,8 @@ namespace Practica3Tc
         private string[] entries, states, instates, fnstates;
         private string fileName = "", initialState;
         Dictionary<string, List<string>> statesDic = new Dictionary<string, List<string>>();
+        Dictionary<string, string[]> transitionDic = new Dictionary<string, string[]>();
         List<string> newStatesString = new List<string>();
-        List<string> states0 = new List<string>();
-        List<string> states1 = new List<string>();
         public Form1()
         {
             InitializeComponent();
@@ -96,7 +95,7 @@ namespace Practica3Tc
 
         private void GenerateFSATable(int columnCount, int rowCount)
         {
-            int flag = 0, flagc = 0, helper;
+            int flag = 0, flagc = 0;
             //Clear out the existing controls, we are generating a new table layout
             fsaTable.Controls.Clear();
 
@@ -123,13 +122,12 @@ namespace Practica3Tc
                         {
                             Label cmd = new Label();
                             cmd.Text = states[y - 1];
-                            helper = Array.IndexOf(fnstates, cmd.Text);
                             if (Array.IndexOf(instates, cmd.Text) >= 0)
                             {
                                 cmd.Text = "-> " + states[y - 1];
                                 flagc = 1;
                             }
-                            if (helper >= 0)
+                            if (Array.IndexOf(fnstates, cmd.Text) >= 0)
                             {
                                 if (flagc == 1)
                                     cmd.Text += " ✔";
@@ -368,12 +366,13 @@ namespace Practica3Tc
 
         private void deterministicTable()
         {
-            initialState = String.Join(",", instates);
+            initialState = String.Join("", instates);
+            newStatesString.Clear();
             newStatesString.Add(initialState);
             statesDic.Clear();
+            transitionDic.Clear();
             bool tableflag = true;
-            string entryvalue = ""; 
-            // MessageBox.Show(fsaTable.RowCount.ToString());
+            int index;
             for (int renglon = 0; renglon < fsaTable.RowCount; renglon++)
             {
                 List<string> entrystate = new List<string>();
@@ -381,33 +380,174 @@ namespace Practica3Tc
                 {
                     Control c = fsaTable.GetControlFromPosition(columna, renglon);
                     if (renglon > 0 && columna > 0)
-                    {
-                        //MessageBox.Show(columna.ToString());
+                    {                       
                         entrystate.Add(c.Text);
                     }
                 }
-                //MessageBox.Show(renglon.ToString());
                 if (renglon > 0)
+                {
                     statesDic.Add(states[renglon - 1], entrystate);
+                }
             }
 
-           // for (int i=0;tableflag;i++)
-           // {
-                foreach (char c in newStatesString[0])
-                {
-                    MessageBox.Show(statesDic[c.ToString(),[0]]);
-                }
-           //}
-
-            //Code to get the values of the lists on the Dictionaries
-            for (int Key = 0; Key < states.Length; Key++)
+            for (int i = 0; i < entries.Length; i++)
             {
-                for (int ListIndex = 0; ListIndex < statesDic[states[Key]].Count; ListIndex++)
-                {
-                    MessageBox.Show(statesDic[states[Key]][ListIndex]);
-                }
+                string[] transition = new string[20];
+                transitionDic.Add(entries[i], transition);
             }
 
+           for (int i=0;tableflag;i++)
+            {
+                int flag = 0;
+                if (newStatesString[i] == "T")
+                {
+                    for (int j = 0; j < entries.Length; j++)
+                    {
+                        transitionDic[entries[j]][i] = "T";
+                    }
+                    if (newStatesString.Last() == "T")
+                        tableflag=false;
+                }
+                else
+                {
+                    foreach (string s in states)
+                    {
+                        if (newStatesString[i].Contains(s))
+                        {
+                            for (int j = 0; j < entries.Length; j++)
+                            {
+                                transitionDic[entries[j]][i] += statesDic[s.ToString()][j] + ",";
+                            }
+                        }
+                    }
+
+                    for (int j = 0; j < entries.Length; j++)
+                    {
+                        transitionDic[entries[j]][i] = transitionDic[entries[j]][i].Replace("-", "");
+                        transitionDic[entries[j]][i] = SortString(transitionDic[entries[j]][i]);
+                        if (transitionDic[entries[j]][i] == "" )
+                            transitionDic[entries[j]][i] = "T";
+                        index = newStatesString.IndexOf(transitionDic[entries[j]][i]);
+                        if (index < 0)
+                        {
+                            newStatesString.Add(transitionDic[entries[j]][i]);
+                            flag = 1;
+                        }
+                        if (flag == 0)
+                            tableflag = false;
+                        else
+                            tableflag = true;
+                    }
+                    if (newStatesString[i] != newStatesString.Last())
+                        tableflag = true;
+                }
+            }            
+            GenerateDeterministicTable(entries.Length+1, newStatesString.Count+1);
+            dfsaTable.Visible = true;
+            dfsaLabel.Visible = true;           
         }
+
+        private void GenerateDeterministicTable(int columnCount, int rowCount)
+        {
+            int flag = 0, flagc = 0;
+            //Clear out the existing controls, we are generating a new table layout
+            dfsaTable.Controls.Clear();
+
+            //Clear out the existing row and column styles
+            dfsaTable.ColumnStyles.Clear();
+            dfsaTable.RowStyles.Clear();
+
+            //Now we will generate the table, setting up the row and column counts first
+            dfsaTable.ColumnCount = columnCount;
+            dfsaTable.RowCount = rowCount;
+
+            for (int x = 0; x < columnCount; x++)
+            {
+                //First add a column
+                dfsaTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, .3f));
+
+                for (int y = 0; y < rowCount; y++)
+                {
+                    //Next, add a row.
+                    dfsaTable.RowStyles.Add(new RowStyle(SizeType.Percent, .3f));
+                    if (x == 0)
+                    {
+                        if (y > 0)
+                        {
+                            Label cmd = new Label();
+                            cmd.Text = newStatesString[y - 1];
+                                if (cmd.Text == newStatesString[0])
+                            {
+                                cmd.Text = "-> " + newStatesString[y - 1];
+                                flagc = 1;
+                            }
+                            if (fnstates.Any(cmd.Text.Contains))
+                            {
+                                if (flagc == 1)
+                                    cmd.Text += " ✔";
+                                else
+                                    cmd.Text = newStatesString[y - 1] + " ✔";
+                                flagc = 0;
+                            }
+                            dfsaTable.Controls.Add(cmd, x, y); //Finally, add the control to the correct location in the tab
+                        }
+                        else
+                        {
+                            Label cmd = new Label();
+                            cmd.Text = "";     //Finally, add the control to the correct location in the table
+                            dfsaTable.Controls.Add(cmd, x, y);
+                        }
+                    }
+                    //Create the control, in this case we will add a button
+                    if (x > 0)
+                    {
+                        if (y > 0)
+                        {
+                            Label cmd = new Label();
+                            cmd.Text = transitionDic[entries[x - 1]][y - 1];
+                            dfsaTable.Controls.Add(cmd, x, y);
+                        }
+                        else if (y == 0)
+                        {
+                            Label cmd = new Label();
+                            cmd.Text = entries[flag];     //Finally, add the control to the correct location in the table
+                            dfsaTable.Controls.Add(cmd, x, y);
+                            if (flag < entries.Length - 1)
+                                flag++;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        static string SortString(string input)
+        {
+            string[] helper = input.Split(',');
+            helper = new HashSet<string>(helper).ToArray();
+            Array.Sort(helper);
+            input = String.Join("", helper);
+            return input;
+        }
+
     }
 }
+
+
+
+
+
+
+//Code to se all the list of states
+//foreach (string c in newStatesString)
+//MessageBox.Show(c);
+
+//Code to get the values of the lists on the Dictionaries
+/*for (int Key = 0; Key < states.Length; Key++)
+{
+    for (int ListIndex = 0; ListIndex < statesDic[states[Key]].Count; ListIndex++)
+    {
+
+        MessageBox.Show(statesDic[states[Key]][ListIndex]);
+    }
+}*/
